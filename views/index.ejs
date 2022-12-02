@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Datos con mongo</title>
+  </head>
+  <body>   
+            <h1>Ingreda el nombre y edad</h1>
+            <form action="/crear" method="POST">
+
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" > <br><br>
+               
+                    <label for="edad">Edad</label>
+                    <input id="edad" name="edad" type="number" > <br><br>
+         
+                <button type="submit"> Registrar</button><br><br>
+            </form>
+
+
+<!-- Aqui muestra mis datos den la tabla ========================================================================================  -->
+            <h1>Tabla</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th> 
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% alumnos.forEach( (alumno) => { %>
+                        <tr>
+                            <td><%= alumno._id %></td>  
+                            <td>____<%= alumno.nombre %>____</td>
+                            <td>____<%= alumno.edad %>___</td>
+                            <td>
+                                <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil">Editar</a>
+                                <a href="/borrar/<%= alumno._id %>">Eliminar</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+    </div>
+<!-- Para actualizar datos ========================================================================================  -->
+    <h1>Actualizar datos</h1>
+    <form action="/editar" method="POST">
+
+        <label for="id">ID</label>
+        <input name="id_editar" id="id_editar" type="text" ><br><br>
+        
+        <label for="nombre">Nombre:</label>
+        <input id="nombre_editar" name="nombre_editar" type="text"><br><br>
+
+        <label for="edad" >Edad:</label>
+        <input id="edad_editar" name="edad_editar" type="number"><br><br>
+                      
+        <button type="submit">Actualizar</button>
+
+    </form>
+  </body>
+</html>
